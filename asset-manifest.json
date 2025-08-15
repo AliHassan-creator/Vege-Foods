@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/Vege-Foods/static/css/main.30cb3322.css",
+    "main.js": "/Vege-Foods/static/js/main.f34334a4.js",
+    "static/js/453.7b623059.chunk.js": "/Vege-Foods/static/js/453.7b623059.chunk.js",
+    "index.html": "/Vege-Foods/index.html",
+    "main.30cb3322.css.map": "/Vege-Foods/static/css/main.30cb3322.css.map",
+    "main.f34334a4.js.map": "/Vege-Foods/static/js/main.f34334a4.js.map",
+    "453.7b623059.chunk.js.map": "/Vege-Foods/static/js/453.7b623059.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.30cb3322.css",
+    "static/js/main.f34334a4.js"
+  ]
+}
