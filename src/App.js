@@ -146,7 +146,7 @@ function App() {
   };
 
   return (
-    <Router basename="/vege-foods">
+    <Router basename="/Vege-Foods">
       <div className="page-wrapper">
         {/* Top Bar */}
         <header className="top-bar">
