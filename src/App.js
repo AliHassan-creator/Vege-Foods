@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { HashRouter as Router, Routes, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import "./App.css";
 import About from "./About";
 import Blog from "./Blog";
@@ -9,6 +9,7 @@ import Shop from "./Shop";
 import Wishlist from "./Wishlist";
 import SingleProduct from "./SingleProduct";
 import Checkout from "./Checkout";
+import BlogSingle from "./BlogSingle";
 import {
   FaPhoneAlt,
   FaEnvelope,
@@ -716,6 +717,7 @@ function App() {
           } />
           <Route path="/about" element={<About />} />
           <Route path="/blog" element={<Blog />} />
+          <Route path="/blog/:postId" element={<BlogSingle />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/cart" element={<Cart />} />
           <Route path="/shop" element={<Shop />} />
@@ -754,7 +756,7 @@ function App() {
               <ul>
                 <li><Link to="/shop">Shop</Link></li>
                 <li><Link to="/about">About</Link></li>
-                <li><Link to="/journal">Journal</Link></li>
+                <li><Link to="/blog">Blog</Link></li>
                 <li><Link to="/contact">Contact Us</Link></li>
               </ul>
             </div>
