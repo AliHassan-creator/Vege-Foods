@@ -1,9 +1,66 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import "./App.css";
 
 function Blog() {
+  const navigate = useNavigate();
+
+  // Add smooth scrolling behavior
+  useEffect(() => {
+    const html = document.documentElement;
+    html.style.scrollBehavior = "smooth";
+    
+    return () => {
+      html.style.scrollBehavior = "auto";
+    };
+  }, []);
+
+  // Sample blog post data
+  const blogPosts = [
+    {
+      id: 1,
+      title: "Even the all-powerful Pointing has no control about the blind texts",
+      excerpt: "Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.",
+      date: "July 20, 2019",
+      author: "Admin",
+      comments: 3,
+      image: "https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=800&auto=format&fit=crop&q=80&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&1"
+    },
+    {
+      id: 2,
+      title: "The secret to growing organic vegetables in small spaces",
+      excerpt: "Discover how to maximize your garden yield even with limited space using these innovative organic gardening techniques.",
+      date: "August 15, 2019",
+      author: "Gardener",
+      comments: 5,
+      image: "https://images.unsplash.com/photo-1542838132-92c53300491e?w=800&auto=format&fit=crop&q=80&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&2"
+    },
+    {
+      id: 3,
+      title: "Seasonal fruits and their health benefits",
+      excerpt: "Learn about the nutritional advantages of eating fruits that are in season and how they can boost your immune system.",
+      date: "September 5, 2019",
+      author: "Nutritionist",
+      comments: 7,
+      image: "https://images.unsplash.com/photo-1550258987-190a2d41a8ba?w=800&auto=format&fit=crop&q=80&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&3"
+    },
+    {
+      id: 4,
+      title: "How to preserve vegetables without losing nutrients",
+      excerpt: "Expert tips on freezing, drying, and canning vegetables while maintaining their maximum nutritional value.",
+      date: "October 12, 2019",
+      author: "Chef",
+      comments: 2,
+      image: "https://images.unsplash.com/photo-1518977676601-b53f82aba655?w=800&auto=format&fit=crop&q=80&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&4"
+    }
+  ];
+
+  const handleReadMore = (postId) => {
+    navigate(`/blog/${postId}`);
+  };
+
   return (
-    <div>
+    <div className="blog-page">
       {/* Hero Section */}
       <div className="about-hero">
         <div className="about-hero-overlay">
@@ -18,26 +75,32 @@ function Blog() {
           <div className="row">
             {/* Left Column: Blog Posts */}
             <div className="col-md-8">
-              {[1, 2, 3, 4].map((post, index) => (
-                <div className="blog-post d-flex mb-5" key={index}>
+              {blogPosts.map((post) => (
+                <div className="blog-post d-flex mb-5" key={post.id}>
                   <div className="post-img">
                     <img
-                      src={`https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=1200+${post}`}
-                      alt="Blog"
+                      src={post.image}
+                      alt={`Blog post ${post.id}`}
+                      loading="lazy"
                     />
                   </div>
                   <div className="post-content pl-4">
                     <p className="post-meta">
-                      July 20, 2019 &nbsp; | &nbsp; Admin &nbsp; | &nbsp; 3
+                      {post.date} &nbsp; | &nbsp; {post.author} &nbsp; | &nbsp; {post.comments}
                     </p>
                     <h2 className="post-title">
-                      Even the all-powerful Pointing has no control about the blind texts
+                      {post.title}
                     </h2>
                     <p className="post-excerpt">
-                      Far far away, behind the word mountains, far from the countries
-                      Vokalia and Consonantia, there live the blind texts.
+                      {post.excerpt}
                     </p>
-                    <button className="read-more-btn">Read more</button>
+                    <button 
+                      className="read-more-btn"
+                      onClick={() => handleReadMore(post.id)}
+                      aria-label={`Read more about ${post.title}`}
+                    >
+                      Read more
+                    </button>
                   </div>
                 </div>
               ))}
@@ -51,6 +114,7 @@ function Blog() {
                   type="text"
                   className="search-input"
                   placeholder="Search..."
+                  aria-label="Search blog posts"
                 />
               </div>
 
@@ -68,19 +132,20 @@ function Blog() {
               {/* Recent Blog */}
               <div className="sidebar-section mb-4">
                 <h3 className="sidebar-title">Recent Blog</h3>
-                {[1, 2].map((item, i) => (
-                  <div className="recent-blog-item d-flex mb-3" key={i}>
+                {blogPosts.slice(0, 2).map((post) => (
+                  <div className="recent-blog-item d-flex mb-3" key={`recent-${post.id}`}>
                     <img
-                      src={`https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=1200${item}`}
-                      alt="Recent"
+                      src={post.image}
+                      alt={`Recent post ${post.id}`}
                       className="recent-thumb"
+                      loading="lazy"
                     />
                     <div className="recent-blog-content pl-3">
                       <p className="recent-title">
-                        Even the all-powerful Pointing has no control about the blind texts
+                        {post.title}
                       </p>
                       <p className="post-meta-small">
-                        April 09, 2019 &nbsp; | &nbsp; Admin &nbsp; | &nbsp; 19
+                        {post.date} &nbsp; | &nbsp; {post.author} &nbsp; | &nbsp; {post.comments}
                       </p>
                     </div>
                   </div>
@@ -113,42 +178,16 @@ function Blog() {
       </section>
 
       {/* Back to top button - Fixed at footer */}
-      <div
-        style={{
-          position: "relative",
-          width: "100%",
-          height: "50px",
-          marginTop: "30px",
-        }}
-      >
+      <div className="back-to-top-container">
         <button
           className="back-to-top"
           aria-label="Scroll to top"
           onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-          style={{
-            position: "absolute",
-            top: "0",
-            left: "50%",
-            transform: "translateX(-50%)",
-            width: "50px",
-            height: "50px",
-            borderRadius: "50%",
-            backgroundColor: "#82ae46",
-            border: "none",
-            color: "white",
-            cursor: "pointer",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            boxShadow: "0 2px 10px rgba(0,0,0,0.1)",
-            zIndex: "100",
-          }}
         >
           <svg
             viewBox="0 0 24 24"
             xmlns="http://www.w3.org/2000/svg"
             aria-hidden
-            style={{ width: "20px", height: "20px" }}
           >
             <path
               d="M6 15l6-6 6 6"
