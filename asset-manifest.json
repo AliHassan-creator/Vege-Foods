@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/Vege-Foods/static/css/main.bbfda94e.css",
+    "main.css": "/Vege-Foods/static/css/main.ac88d220.css",
     "main.js": "/Vege-Foods/static/js/main.ddbf1335.js",
     "static/js/453.7b623059.chunk.js": "/Vege-Foods/static/js/453.7b623059.chunk.js",
     "index.html": "/Vege-Foods/index.html",
-    "main.bbfda94e.css.map": "/Vege-Foods/static/css/main.bbfda94e.css.map",
+    "main.ac88d220.css.map": "/Vege-Foods/static/css/main.ac88d220.css.map",
     "main.ddbf1335.js.map": "/Vege-Foods/static/js/main.ddbf1335.js.map",
     "453.7b623059.chunk.js.map": "/Vege-Foods/static/js/453.7b623059.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.bbfda94e.css",
+    "static/css/main.ac88d220.css",
     "static/js/main.ddbf1335.js"
   ]
 }
